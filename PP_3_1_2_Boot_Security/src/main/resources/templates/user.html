@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Информация о пользователе</title>
+</head>
+<body>
+<h2>Информация о пользователе</h2>
+<p><strong>Имя пользователя:</strong> <span th:text="${user.username}"></span></p>
+<p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+<p><strong>Возраст:</strong> <span th:text="${user.age}"></span></p>
+<p><strong>Роли:</strong>
+    <span th:each="role, iterStat : ${user.roles}">
+        <span th:text="${role.name}"></span>
+        <span th:if="${!iterStat.last}">, </span>
+    </span>
+</p>
+
+
+<form method="post" style="text-align:center" th:action="@{/logout}">
+    <input type="submit" value="Выйти из аккаунта"/>
+</form>
+</body>
+</html>
+

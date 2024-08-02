@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/admin/id/update}" th:method="POST" th:object="${user}">
+    <input th:field="*{id}" type="hidden"/>
+    <label for="username">Enter Username:</label>
+    <input id="username" th:field="*{username}" type="text"/>
+    <div style="color:red" th:errors="*{username}" th:if="${#fields.hasErrors('username')}">Username Error</div>
+    <br/>
+    <label for="password">Enter Password:</label>
+    <input id="password" th:field="*{password}" type="text"/>
+    <div style="color:red" th:errors="*{password}" th:if="${#fields.hasErrors('password')}">Password Error</div>
+    <br/>
+    <label for="email">Enter Email:</label>
+    <input id="email" th:field="*{email}" type="text"/>
+    <div style="color:red" th:errors="*{email}" th:if="${#fields.hasErrors('email')}">Email Error</div>
+    <br/>
+    <label for="age">Enter age:</label>
+    <input id="age" th:field="*{age}" type="text"/>
+    <div style="color:red" th:errors="*{age}" th:if="${#fields.hasErrors('age')}">Age Error</div>
+    <br/>
+    <label for="role">Enter role:</label>
+    <select id="roleSelect" multiple name="roles" size="2">
+        <option th:selected="${#lists.contains(user.roles, new ru.kata.spring.boot_security.demo.entities.Role(2))}"
+                th:style="${#lists.contains(user.roles, new ru.kata.spring.boot_security.demo.entities.Role(2)) ? 'background-color: #0000ff; color: #ffffff;' : ''}"
+                value="2">
+            Admin
+        </option>
+        <option th:selected="${#lists.contains(user.roles, new ru.kata.spring.boot_security.demo.entities.Role(1))}"
+                th:style="${#lists.contains(user.roles, new ru.kata.spring.boot_security.demo.entities.Role(1)) ? 'background-color: #0000ff; color: #ffffff;' : ''}"
+                value="1">
+            User
+        </option>
+    </select>
+    <input type="submit" value="Update user!"/>
+</form>
+<br/>
+<form th:action="@{/admin/id/delete(id=${user.getId()})}" th:method="POST">
+    <input type="submit" value="Delete!"/>
+</form>
+<form method="post" style="text-align:center" th:action="@{/logout}">
+    <input type="submit" value="Выйти из аккаунта"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New User!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/admin/new}" th:method="POST" th:object="${user}">
+    <label for="Username">Имя пользователя: </label>
+    <input id="Username" th:field="*{username}" type="text"/>
+    <div style="color:#b81a1a" th:errors="*{username}" th:if="${#fields.hasErrors('username')}">Ошибка имени
+        пользователя
+    </div>
+    <br/>
+
+    <label for="Email">Электронная почта: </label>
+    <input id="Email" th:field="*{email}" type="text"/>
+    <div style="color:red" th:errors="*{email}" th:if="${#fields.hasErrors('email')}">Ошибка электронной почты</div>
+    <br/>
+    <label for="Password">Пароль: </label>
+    <input id="Password" th:field="*{password}" type="text"/>
+    <div style="color:red" th:errors="*{password}" th:if="${#fields.hasErrors('password')}">Ошибка пароля</div>
+    <br/>
+    <label for="Age">Возраст: </label>
+    <input id="Age" th:field="*{age}" type="text"/>
+    <div style="color:red" th:errors="*{age}" th:if="${#fields.hasErrors('age')}">Ошибка возраста</div>
+    <br/>
+
+    <label for="role">Выберите роль:</label>
+    <select id="roleSelect" multiple th:field="*{roles}" size="2">
+        <option th:value="2">Admin</option>
+        <option th:value="1">User</option>
+    </select>
+    <br/>
+
+    <input type="submit" value="Создать пользователя"/>
+</form>
+<form method="post" style="text-align:center" th:action="@{/logout}">
+    <input type="submit" value="Выйти из аккаунта"/>
+</form>
+</body>
+</html>
