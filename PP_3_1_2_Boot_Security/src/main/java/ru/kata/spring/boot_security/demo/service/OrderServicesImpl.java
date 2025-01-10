@@ -1,20 +1,21 @@
-package com.example.demo.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.demo.entities.Order;
-import com.example.demo.repository.OrderRepository;
-import com.example.demo.utils.PngToPdfConverter;
 import com.google.zxing.WriterException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kata.spring.boot_security.demo.entities.Order;
+import ru.kata.spring.boot_security.demo.repository.OrderRepository;
+import ru.kata.spring.boot_security.demo.utils.PngToPdfConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-public class OrderServiceImpl implements OrderService {
+@Service
+public class OrderServicesImpl implements OrderServices {
 	private OrderRepository orderRepository;
 	private PngToPdfConverter pngToPdfConverter;
 	
-	public OrderServiceImpl(OrderRepository orderRepository, PngToPdfConverter pngToPdfConverter) {
+	public OrderServicesImpl(OrderRepository orderRepository, PngToPdfConverter pngToPdfConverter) {
 		this.orderRepository = orderRepository;
 		this.pngToPdfConverter = pngToPdfConverter;
 	}

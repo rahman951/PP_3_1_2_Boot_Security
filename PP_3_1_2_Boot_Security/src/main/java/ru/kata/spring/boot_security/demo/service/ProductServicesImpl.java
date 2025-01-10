@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.demo.entities.Product;
-import com.example.demo.repository.ProductRepository;
+
 import com.google.zxing.WriterException;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kata.spring.boot_security.demo.entities.Product;
+import ru.kata.spring.boot_security.demo.repository.ProductRepository;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -12,11 +13,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class ProductServiceImpl implements ProductService {
+public class ProductServicesImpl implements ProductServices {
 	private ProductRepository productRepository;
 	
 	
-	public ProductServiceImpl(ProductRepository productRepository) {
+	public ProductServicesImpl(ProductRepository productRepository) {
 		this.productRepository = productRepository;
 		
 	}

@@ -1,13 +1,14 @@
-package com.example.demo.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.demo.entities.Product;
+
 import com.google.zxing.WriterException;
+import ru.kata.spring.boot_security.demo.entities.Product;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ProductService {
+public interface ProductServices {
 	
 	void addProduct(Product product);
 	

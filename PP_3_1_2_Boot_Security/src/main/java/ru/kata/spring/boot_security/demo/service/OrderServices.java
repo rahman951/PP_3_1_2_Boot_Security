@@ -1,12 +1,13 @@
-package com.example.demo.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.demo.entities.Order;
+
 import com.google.zxing.WriterException;
+import ru.kata.spring.boot_security.demo.entities.Order;
 
 import java.io.IOException;
 import java.util.List;
 
-public interface OrderService {
+public interface OrderServices {
 	
 	List<Order> getAllOrders();
 	

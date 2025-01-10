@@ -1,11 +1,12 @@
-package com.example.demo.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.demo.entities.Product;
-import com.example.demo.entities.Sale;
+
+import ru.kata.spring.boot_security.demo.entities.Product;
+import ru.kata.spring.boot_security.demo.entities.Sale;
 
 import java.util.List;
 
-public interface SaleService {
+public interface SaleServices {
 	List<Sale> findAll();
 	
 	List<Sale> findByStatus(String status);
